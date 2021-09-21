@@ -9,7 +9,7 @@ import java.util.Random;
 
 @Controller
 public class HelloController {
-    @GetMapping("/")
+    @GetMapping("/test")
     @ResponseBody
     public String helloFromSpring(){
         return "Hello from the world of Spring.";
