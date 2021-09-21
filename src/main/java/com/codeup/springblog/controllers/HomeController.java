@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Random;
 
 @Controller
-public class UsersController {
+public class HomeController {
 
     @GetMapping("/")
     @ResponseBody
-    public String helloFromSpring(){
+    public String landing(){
         return "This is the landing page!";
     }
 
