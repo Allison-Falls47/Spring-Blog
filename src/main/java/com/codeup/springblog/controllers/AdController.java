@@ -1,7 +1,10 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Ad;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repos.AdRepository;
+import com.codeup.springblog.repos.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +14,11 @@ import java.util.List;
 @Controller
 public class AdController {
 
+    @Autowired
     private final AdRepository adDao;
+
+    @Autowired
+    private UserRepository userDao;
 
     public AdController(AdRepository adDao) {
         this.adDao = adDao;
@@ -46,6 +53,8 @@ public class AdController {
             @RequestParam(name = "title") String title,
             @RequestParam(name = "description") String description
     ) {
+
+        User hardCodedUser = userDao.getById(1L);
 
         Ad adToSubmitToDB = new Ad(title,description);
 

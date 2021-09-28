@@ -18,6 +18,10 @@ public class Ad {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User owner;
+
     public Ad() {
     }
 
