@@ -58,7 +58,7 @@ public class PostController {
     public String createPost(@RequestParam(name = "title") String title,
                              @RequestParam(name = "body") String body) {
 
-        User owner = userDao
+        User owner = userDao.getById(1L);
         Post postToAdd = new Post(title, body, owner);
         postDao.save(postToAdd);
         return "redirect:/posts";

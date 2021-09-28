@@ -52,7 +52,7 @@ public class User {
         return posts;
     }
 
-    public void setAds(List<Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 }
