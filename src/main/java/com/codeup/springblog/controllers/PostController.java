@@ -5,6 +5,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repos.PostRepository;
 import com.codeup.springblog.repos.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,16 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post postToAdd) {
 
-      postToAdd.setOwner(userDao.getById(1L));
+       User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+      postToAdd.setOwner(loggedInUser);
+
+      emailService.prepareAndSend(
+          postToAdd,
+          "new post",
+          "You created a new post"
+      );
+
         postDao.save(postToAdd);
         return "redirect:/posts";
     }

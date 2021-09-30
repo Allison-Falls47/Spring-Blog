@@ -21,7 +21,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Post> posts;
 
-    public User() {
+    public User(User user) {
     }
 
     public Long getId() {
