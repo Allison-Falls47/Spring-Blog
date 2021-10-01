@@ -2,15 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create Pots</title>
+    <title>Create Ad</title>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
 
 <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
 
-  <input type="text" th:field="*{title}" placeholder="title">
-  <input type="text" th:field="*{body}" placeholder="body">
-  <input type="submit">
+    <input type="text" th:field="*{title}" placeholder="title">
+    <input th:field="*{body}" type="text" placeholder="body">
+    <input type="submit">
 
 </form>
 
